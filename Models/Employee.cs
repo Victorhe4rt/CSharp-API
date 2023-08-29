@@ -8,6 +8,23 @@ namespace webApiCrud.Models;
 /// </summary>
 public partial class Employee
 {
+    public Employee(int businessEntityId, string nationalIdnumber, string loginId, short? organizationLevel, string jobTitle, DateTime birthDate, string maritalStatus, string gender, DateTime hireDate, bool? salariedFlag, short vacationHours, short sickLeaveHours, bool? currentFlag)
+    {
+        BusinessEntityId = businessEntityId;
+        NationalIdnumber = nationalIdnumber;
+        LoginId = loginId;
+        OrganizationLevel = organizationLevel;
+        JobTitle = jobTitle;
+        BirthDate = birthDate;
+        MaritalStatus = maritalStatus;
+        Gender = gender;
+        HireDate = hireDate;
+        SalariedFlag = salariedFlag;
+        VacationHours = vacationHours;
+        SickLeaveHours = sickLeaveHours;
+        CurrentFlag = currentFlag;
+    }
+
     /// <summary>
     /// Primary key for Employee records.  Foreign key to BusinessEntity.BusinessEntityID.
     /// </summary>
@@ -73,8 +90,8 @@ public partial class Employee
     /// </summary>
     public bool? CurrentFlag { get; set; }
 
-    /// <summary>
-    /// ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+    //<summary>
+     //ROWGUIDCOL number uniquely identifying the record.Used to support a merge replication sample.
     /// </summary>
     public Guid Rowguid { get; set; }
 
