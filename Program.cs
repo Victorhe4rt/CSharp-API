@@ -15,11 +15,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Your API", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Adventure Works 2019 API", Version = "v1" });
 });
 
 // Register your services
 builder.Services.AddTransient<IEmployeeRepository, EmployeeRepository>(); // Replace IExampleService and ExampleService with actual types
+builder.Services.AddTransient<IProductDescriptionRepository, ProductDescriptionRepository>();
 
 var app = builder.Build();
 
@@ -29,7 +30,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Your API v1");
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Adventure Works 2019 API v1");
     });
 }
 
