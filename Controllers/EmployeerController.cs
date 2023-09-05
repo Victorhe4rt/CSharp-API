@@ -15,31 +15,7 @@ namespace webApiCrud.Controllers
             _employeeRepository = employeeRepository ?? throw new ArgumentNullException(nameof(employeeRepository));
         }
 
-        //[HttpPost]
-        //public IActionResult Add(EmployeeViewModel employeeView)
-        //{
-        //    var employeeConstructor = new Employee(
-        //         employeeView.BusinessEntityId,
-        //         employeeView.NationalIdnumber,
-        //         employeeView.LoginId,
-        //         employeeView.OrganizationLevel,
-        //         employeeView.JobTitle,
-        //         employeeView.BirthDate,
-        //         employeeView.MaritalStatus,
-        //         employeeView.Gender,
-        //         employeeView.HireDate,
-        //         employeeView.SalariedFlag,
-        //         employeeView.VacationHours,
-        //         employeeView.SickLeaveHours,
-        //         employeeView.CurrentFlag
-        //     );
-        //
-        //    _employeeRepository.add(employeeConstructor);
-        //
-        //    return Ok();
-        //
-        //}
-
+      
         [HttpGet]
         public IActionResult Get()
         {

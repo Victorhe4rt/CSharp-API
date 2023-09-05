@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using webApiCrud.Models;
 using webApiCrud.ViewModel;
 
@@ -16,6 +17,8 @@ namespace webApiCrud.Controllers
             _productDescriptionRepository = productDescriptionRepository ?? throw new ArgumentNullException(nameof(productDescriptionRepository));
         }
 
+
+        [Authorize]
         [HttpPost]
         public IActionResult Add(ProductDescriptionViewModel productDescriptionView)
         {
@@ -32,8 +35,9 @@ namespace webApiCrud.Controllers
 
         }
 
-        [HttpGet]
 
+        [Authorize]
+        [HttpGet]
         public IActionResult Get()
         {
             var productDescription = _productDescriptionRepository.Get();

@@ -8,6 +8,9 @@ namespace webApiCrud.Models;
 /// </summary>
 public partial class ProductDescription
 {
+    public ProductDescription()
+    {
+    }
 
     public ProductDescription(string description, Guid rowguid, DateTime modifiedDate)
     {
