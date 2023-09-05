@@ -6,6 +6,8 @@ namespace webApiCrud.Infrastructure
     {
         public DbSet<Employee> Employees { get; set; }
 
+        public DbSet<ProductDescription> ProductDescriptions { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);

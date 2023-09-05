@@ -8,6 +8,13 @@ namespace webApiCrud.Models;
 /// </summary>
 public partial class ProductDescription
 {
+
+    public ProductDescription(string description, Guid rowguid, DateTime modifiedDate)
+    {
+        Description = description;
+        Rowguid = rowguid;
+        ModifiedDate = modifiedDate;
+    }
     /// <summary>
     /// Primary key for ProductDescription records.
     /// </summary>
