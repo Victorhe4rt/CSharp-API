@@ -80,7 +80,7 @@ namespace webApiCrud.Controllers
         {
             var result = _productDescriptionRepository.DeleteProductById(id);
 
-            if (result != true)
+            if (result ==true)
             {
                 return Ok(result);
             }
@@ -90,9 +90,9 @@ namespace webApiCrud.Controllers
 
 
         [HttpPut("UpdateProductById/{id}")]
-        public IActionResult UpdateProductById(int id, [FromBody] ProductDescription productDescription)
+        public IActionResult UpdateProductById(int id, UpdateDescription updatedProductDescription)
         {
-            var updatedProduct = _productDescriptionRepository.UpdateProductById(id, productDescription);
+            var updatedProduct = _productDescriptionRepository.UpdateProductById(id,updatedProductDescription.newDescription);
             if (updatedProduct != null)
             {
                 return Ok(updatedProduct);

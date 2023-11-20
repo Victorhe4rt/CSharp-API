@@ -12,12 +12,20 @@ public partial class ProductDescription
     {
     }
 
+   
+
     public ProductDescription(string description, Guid rowguid, DateTime modifiedDate)
     {
         Description = description;
         Rowguid = rowguid;
         ModifiedDate = modifiedDate;
  
+    }
+
+    public ProductDescription(string description)
+    {
+        Description = description;
+       
     }
     /// <summary>
     /// Primary key for ProductDescription records.

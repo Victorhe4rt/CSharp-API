@@ -34,9 +34,16 @@ namespace webApiCrud.Infrastructure
         {
             try
             {
-                var productToDelete = _connectionContext.ProductDescriptions.Where(x => x.ProductDescriptionId == ID);
+                var productToDeleteCulture = _connectionContext.ProductModelProductDescriptionCultures.Where(x => x.ProductDescriptionId == ID).SingleOrDefault();
+                if(productToDeleteCulture != null)
+                {
+                    _connectionContext.ProductModelProductDescriptionCultures.Remove(productToDeleteCulture);
+                }
+                
+                var productToDelete = _connectionContext.ProductDescriptions.Where(x => x.ProductDescriptionId == ID).SingleOrDefault();
                 _connectionContext.ProductDescriptions.Remove(productToDelete);
                 _connectionContext.SaveChanges();
+
                 return true;
             }
             catch(Exception ex)
@@ -46,7 +53,7 @@ namespace webApiCrud.Infrastructure
            
         }
 
-        public ProductDescription UpdateProductById(int productId, ProductDescription updatedProductDescription)
+        public ProductDescription UpdateProductById(int productId, string newDescription)
         {
             try
             {
@@ -54,8 +61,8 @@ namespace webApiCrud.Infrastructure
 
                 if (productToUpdate != null)
                 {
-                    productToUpdate.Property1 = updatedProductDescription.Property1;
-                    productToUpdate.Property2 = updatedProductDescription.Property2;
+                    
+                    productToUpdate.Description = newDescription;
                    _connectionContext.SaveChanges();
                     return productToUpdate;
                 }

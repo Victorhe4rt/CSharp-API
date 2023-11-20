@@ -9,6 +9,6 @@
 
         bool DeleteProductById(int id);
 
-        ProductDescription UpdateProductById(int productId, ProductDescription updatedProductDescription); 
+        ProductDescription UpdateProductById(int productId,string description); 
     }
 }
