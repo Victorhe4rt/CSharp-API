@@ -43,7 +43,7 @@ namespace webApiCrud.Controllers
         }
 
 
-        //[Authorize]
+        [Authorize]
         [HttpGet("GetAllProducts")]
         public IActionResult GetAll()
         {
@@ -60,6 +60,7 @@ namespace webApiCrud.Controllers
           
         }
 
+        [Authorize]
         [HttpGet("GetProductById")]
         public IActionResult GetDescById(int id)
         {
@@ -75,6 +76,7 @@ namespace webApiCrud.Controllers
 
         }
 
+        [Authorize]
         [HttpDelete("DeleteProductById/{id}")]
         public IActionResult DeleteProductById(int id)
         {
@@ -88,7 +90,7 @@ namespace webApiCrud.Controllers
         }
 
 
-
+        [Authorize]
         [HttpPut("UpdateProductById/{id}")]
         public IActionResult UpdateProductById(int id, UpdateDescription updatedProductDescription)
         {
