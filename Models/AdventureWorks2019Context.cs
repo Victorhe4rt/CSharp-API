@@ -194,8 +194,7 @@ public partial class AdventureWorks2019Context : DbContext
     public virtual DbSet<WorkOrderRouting> WorkOrderRoutings { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=DESKTOP-93RN7K2\\SQLEXPRESS;Database=AdventureWorks2019;User Id=app_test;Password=1234;TrustServerCertificate=True;");
+        => optionsBuilder.UseSqlServer("Server=DESKTOP-93RN7K2\\SQLEXPRESS;Database=AdventureWorks2019;User Id=app_test;Password=123456;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -1516,9 +1515,9 @@ public partial class AdventureWorks2019Context : DbContext
                 .HasForeignKey(d => d.CultureId)
                 .OnDelete(DeleteBehavior.ClientSetNull);
 
-            entity.HasOne(d => d.ProductDescription).WithMany(p => p.ProductModelProductDescriptionCultures)
-                .HasForeignKey(d => d.ProductDescriptionId)
-                .OnDelete(DeleteBehavior.ClientSetNull);
+            //entity.HasOne(d => d.ProductDescription).WithMany(p => p.ProductModelProductDescriptionCultures)
+            //    .HasForeignKey(d => d.ProductDescriptionId)
+            //    .OnDelete(DeleteBehavior.ClientSetNull);
 
             entity.HasOne(d => d.ProductModel).WithMany(p => p.ProductModelProductDescriptionCultures)
                 .HasForeignKey(d => d.ProductModelId)

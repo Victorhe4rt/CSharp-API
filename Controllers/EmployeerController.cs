@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using webApiCrud.Models;
 using webApiCrud.ViewModel; 
 
@@ -15,13 +16,21 @@ namespace webApiCrud.Controllers
             _employeeRepository = employeeRepository ?? throw new ArgumentNullException(nameof(employeeRepository));
         }
 
-      
+        [Authorize]
         [HttpGet]
         public IActionResult Get()
         {
-            var employees = _employeeRepository.Get(); 
-
-            return Ok(employees);
+            try
+            {
+                var employees = _employeeRepository.Get();
+                return Ok(employees);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+           
+       
 
         }
     }

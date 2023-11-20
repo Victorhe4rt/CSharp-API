@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Mvc;
 using webApiCrud.Models;
 using webApiCrud.ViewModel;
@@ -16,35 +17,91 @@ namespace webApiCrud.Controllers
         {
             _productDescriptionRepository = productDescriptionRepository ?? throw new ArgumentNullException(nameof(productDescriptionRepository));
         }
-
-
         [Authorize]
-        [HttpPost]
+        [HttpPost("CreateProduct")]
         public IActionResult Add(ProductDescriptionViewModel productDescriptionView)
         {
             var productDescriptionConstructor = new ProductDescription(
               productDescriptionView.Description,
               productDescriptionView.Rowguid,
               productDescriptionView.ModifiedDate
+        
              );
 
+            try
+            {
+                _productDescriptionRepository.add(productDescriptionConstructor);
+                return Ok();
 
-            _productDescriptionRepository.add(productDescriptionConstructor);
-
-            return Ok();
-
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+            
+         
         }
 
 
-        [Authorize]
-        [HttpGet]
-        public IActionResult Get()
+        //[Authorize]
+        [HttpGet("GetAllProducts")]
+        public IActionResult GetAll()
         {
-            var productDescription = _productDescriptionRepository.Get();
+            try
+            {
+                var productDescription = _productDescriptionRepository.GetAll();
+                return Ok(productDescription);
 
-            return Ok(productDescription);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+          
+        }
+
+        [HttpGet("GetProductById")]
+        public IActionResult GetDescById(int id)
+        {
+            try
+            {
+                var productDescription = _productDescriptionRepository.GetDescById(id);
+                return Ok(productDescription);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
 
         }
+
+        [HttpDelete("DeleteProductById/{id}")]
+        public IActionResult DeleteProductById(int id)
+        {
+            var result = _productDescriptionRepository.DeleteProductById(id);
+
+            if (result != true)
+            {
+                return Ok(result);
+            }
+            return BadRequest("Error deleting product or product not found");
+        }
+
+
+
+        [HttpPut("UpdateProductById/{id}")]
+        public IActionResult UpdateProductById(int id, [FromBody] ProductDescription productDescription)
+        {
+            var updatedProduct = _productDescriptionRepository.UpdateProductById(id, productDescription);
+            if (updatedProduct != null)
+            {
+                return Ok(updatedProduct);
+            }
+            return BadRequest("Error updating product or product not found");
+        }
+
+
+
 
 
 

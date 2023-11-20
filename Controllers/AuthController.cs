@@ -20,6 +20,5 @@ namespace webApiCrud.Controllers
 
             return BadRequest("Username or Password Invalid!");
         }
-
     }
 }

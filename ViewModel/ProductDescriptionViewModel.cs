@@ -1,4 +1,6 @@
-﻿namespace webApiCrud.ViewModel
+﻿using webApiCrud.Models;
+
+namespace webApiCrud.ViewModel
 {
     public class ProductDescriptionViewModel
     {
@@ -18,5 +20,6 @@
         /// Date and time the record was last updated.
         /// </summary>
         public DateTime ModifiedDate { get; set; }
+      
     }
 }

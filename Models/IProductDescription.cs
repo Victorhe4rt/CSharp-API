@@ -3,7 +3,12 @@
     public interface IProductDescriptionRepository
     {
         void add(ProductDescription description);
+        List<ProductDescription> GetAll();
 
-        List<ProductDescription> Get();
+        ProductDescription GetDescById(int id);
+
+        bool DeleteProductById(int id);
+
+        ProductDescription UpdateProductById(int productId, ProductDescription updatedProductDescription); 
     }
 }

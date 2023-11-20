@@ -17,26 +17,27 @@ public partial class ProductDescription
         Description = description;
         Rowguid = rowguid;
         ModifiedDate = modifiedDate;
+ 
     }
     /// <summary>
     /// Primary key for ProductDescription records.
     /// </summary>
-    public int ProductDescriptionId { get; set; }
+    public int ?ProductDescriptionId { get; set; }
 
     /// <summary>
     /// Description of the product.
     /// </summary>
-    public string Description { get; set; } = null!;
+    public string ?Description { get; set; } = null!;
 
     /// <summary>
     /// ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
     /// </summary>
-    public Guid Rowguid { get; set; }
+    public Guid ?Rowguid { get; set; }
 
     /// <summary>
     /// Date and time the record was last updated.
     /// </summary>
     public DateTime ModifiedDate { get; set; }
 
-    public virtual ICollection<ProductModelProductDescriptionCulture> ProductModelProductDescriptionCultures { get; set; } = new List<ProductModelProductDescriptionCulture>();
+   
 }
